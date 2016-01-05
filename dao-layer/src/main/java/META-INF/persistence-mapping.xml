@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+        <entity class="dao.layer.dao.adapter.AccountEntity">
+                <table name="acounts" schema="public" catalog="webshop"/>
+                <attributes>
+                        <id name="id">
+                                <column name="id" nullable="false" precision="10"/>
+                        </id>
+                        <basic name="userName">
+                                <column name="user_name" nullable="false" length="50"/>
+                        </basic>
+                        <basic name="password">
+                                <column name="password" nullable="false" length="200"/>
+                        </basic>
+                        <basic name="email">
+                                <column name="email" nullable="false" length="200"/>
+                        </basic>
+                        <basic name="amount">
+                                <column name="amount" precision="2147483647"/>
+                        </basic>
+                        <basic name="lastLogin">
+                                <column name="last_login" nullable="false" precision="13"/>
+                        </basic>
+                </attributes>
+        </entity>
+</entity-mappings>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" default-activation="lazy">
+
+    <bean id="entityManager" class="javax.persistence.Persistence" factory-method="createEntityManagerFactory">
+        <argument index="0" type="java.lang.String" value="postgresImplementation"/>
+    </bean>
+    <bean id="postgresImpl" class="dao.layer.dao.postgresImpl">
+        <argument index="0" ref="entityManager"/>
+    </bean>
+    <service ref="postgresImpl" interface="dao.api.service.DaoAccountService"/>
+
+    <bean id="accountEntity" class="dao.layer.dao.adapter.AccountEntity"/>
+    <service ref="accountEntity" interface="dao.api.model.Account"/>
+
+    <!--for test-->
+
+</blueprint>
