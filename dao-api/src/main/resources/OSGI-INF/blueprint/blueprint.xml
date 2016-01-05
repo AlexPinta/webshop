@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" default-activation="lazy">
+
+    <bean id="userAccount" class="dao.api.model.Account"/>
+    <service ref="serviceDaoAccount" interface="dao.api.service.DaoAccountService"/>
+</blueprint>
