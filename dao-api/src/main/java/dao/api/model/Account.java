@@ -7,7 +7,7 @@ public abstract class Account {
     protected String userName;
     protected String email;
     protected String password;
-    protected Double amount;
+    protected float amount;
     protected Date lastLogin;
 
 

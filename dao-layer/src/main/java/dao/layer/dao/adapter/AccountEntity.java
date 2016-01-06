@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "acounts", schema = "public", catalog = "webshop")
+@Table(name = "accounts") //, schema = "public", catalog = "webshop")
 public class AccountEntity extends Account{
 //    private int id;
 //    private String userName;
@@ -16,6 +16,7 @@ public class AccountEntity extends Account{
 //    private Date lastLogin;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;
@@ -56,12 +57,12 @@ public class AccountEntity extends Account{
     }
 
     @Basic
-    @Column(name = "amount", nullable = true, insertable = true, updatable = true, precision = 0)
-    public Double getAmount() {
+    @Column(name = "amount", nullable = true, insertable = true, updatable = true)
+    public float getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(float amount) {
         this.amount = amount;
     }
 
@@ -84,9 +85,9 @@ public class AccountEntity extends Account{
 
         if (id != that.id) return false;
         if (userName != null ? !userName.equals(that.userName) : that.userName != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+//        if (password != null ? !password.equals(that.password) : that.password != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
+//        if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
         if (lastLogin != null ? !lastLogin.equals(that.lastLogin) : that.lastLogin != null) return false;
 
         return true;
@@ -96,10 +97,10 @@ public class AccountEntity extends Account{
     public int hashCode() {
         int result = id;
         result = 31 * result + (userName != null ? userName.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
+//        result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (amount != null ? amount.hashCode() : 0);
-        result = 31 * result + (lastLogin != null ? lastLogin.hashCode() : 0);
+//        result = 31 * result + (amount != null ? amount.hashCode() : 0);
+//        result = 31 * result + (lastLogin != null ? lastLogin.hashCode() : 0);
         return result;
     }
 

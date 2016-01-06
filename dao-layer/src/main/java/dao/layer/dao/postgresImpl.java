@@ -3,13 +3,17 @@ package dao.layer.dao;
 import dao.api.model.Account;
 import dao.api.service.DaoAccountService;
 import dao.layer.dao.adapter.AccountEntity;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.Date;
+import java.util.List;
 
+@Repository
+@Transactional
 public class postgresImpl implements DaoAccountService{
-
     private EntityManager entityManager;
 
     @Override
@@ -20,7 +24,6 @@ public class postgresImpl implements DaoAccountService{
         query.setParameter("password", password);
         AccountEntity result = (AccountEntity)query.getSingleResult();
         entityManager.getTransaction().commit();
-        entityManager.close();
         return result;
     }
 
@@ -35,8 +38,6 @@ public class postgresImpl implements DaoAccountService{
             entityManager.persist(new AccountEntity(userName, password, email, new Date()));
         }
         entityManager.getTransaction().commit();
-        entityManager.close();
-
         return checkAbility;
     }
 
@@ -47,11 +48,24 @@ public class postgresImpl implements DaoAccountService{
         query.setParameter("id", userId);
         AccountEntity result = (AccountEntity)query.getSingleResult();
         entityManager.getTransaction().commit();
-        entityManager.close();
+        return result;
+    }
+
+    @Override
+    public List<? extends Account> getListOfAccounts() {
+        entityManager.getTransaction().begin();
+        Query query = entityManager.createQuery("from AccountEntity", AccountEntity.class);
+        List<AccountEntity> result = query.getResultList();
+        entityManager.getTransaction().commit();
+//        entityManager.close();
         return result;
     }
 
     public postgresImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
+    }
+
+
+    public postgresImpl() {
     }
 }
