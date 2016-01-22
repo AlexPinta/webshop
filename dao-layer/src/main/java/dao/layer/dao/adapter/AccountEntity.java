@@ -76,34 +76,6 @@ public class AccountEntity extends Account{
         this.lastLogin = lastLogin;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        AccountEntity that = (AccountEntity) o;
-
-        if (id != that.id) return false;
-        if (userName != null ? !userName.equals(that.userName) : that.userName != null) return false;
-//        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-//        if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
-        if (lastLogin != null ? !lastLogin.equals(that.lastLogin) : that.lastLogin != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (userName != null ? userName.hashCode() : 0);
-//        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-//        result = 31 * result + (amount != null ? amount.hashCode() : 0);
-//        result = 31 * result + (lastLogin != null ? lastLogin.hashCode() : 0);
-        return result;
-    }
-
     public AccountEntity(String pUserName, String pPassword, String pEmail, Date pLastLogin) {
         userName = pUserName;
         password = pPassword;
