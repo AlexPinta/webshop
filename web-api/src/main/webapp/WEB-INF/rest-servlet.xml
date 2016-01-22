@@ -11,7 +11,16 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-       <context:component-scan base-package="Controllers" />
-       <mvc:annotation-driven />
+        <context:component-scan base-package="Controllers" />
+        <mvc:annotation-driven />
+        <import resource="spring-security.xml"/>
 
+        <context:property-placeholder location="classpath*:/dao_conection.properties"/>
+
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+                <property name="driverClassName" value="${connection.driver_class}"/>
+                <property name="url" value="${connection.url}"/>
+                <property name="username" value="${connection.username}"/>
+                <property name="password" value="${connection.password}"/>
+        </bean>
 </beans>

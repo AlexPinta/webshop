@@ -13,6 +13,4 @@
     <bean id="accountEntity" class="dao.layer.dao.adapter.AccountEntity"/>
     <service ref="accountEntity" interface="dao.api.model.Account"/>
 
-    <!--for test-->
-
 </blueprint>
